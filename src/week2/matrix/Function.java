@@ -14,8 +14,8 @@ public class Function {
         matrix2.displayMatrix();
         System.out.println("=");
 
-        for (int i = 1; i < row; i++) {
-            for (int j = 1; j < column; j++) {
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= column; j++) {
                 int value = matrix1.getValue(i, j) + matrix2.getValue(i, j);
                 result.setvalue(i, j, value);
             }
@@ -36,8 +36,8 @@ public class Function {
         matrix2.displayMatrix();
         System.out.println("=");
 
-        for (int i = 1; i < row; i++) {
-            for (int j = 1; j < column; j++) {
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= column; j++) {
                 int value = matrix1.getValue(i, j) + matrix2.getValue(i, j);
                 result.setvalue(i,j,value);
             }
@@ -57,8 +57,8 @@ public class Function {
         matrix2.displayMatrix();
         System.out.println("=");
 
-        for(int i = 1 ; i < row ; i++){
-            for (int j = 1; j < column; j++) {
+        for(int i = 1 ; i <= row ; i++){
+            for (int j = 1; j <= column; j++) {
                 int value = 0;
                 for (int k = 0; k < matrix1.getColumn(); k++) {
                     value += matrix1.getValue(i, k) * matrix2.getValue(k, j);
