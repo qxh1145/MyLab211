@@ -14,8 +14,10 @@ public class Function {
         int power = 0;
         for (int i = number.length() - 1; i >= 0; i--){
             char digit = number.charAt(i);
-            int digiValue = (digit >= '0' && digit <= '9') ? digit - '0' : digit - 'A' + 10;
-            decimalValue += digiValue * Math.pow(base, power);
+            if ((digit >= '0' && digit <= '9') || (digit >= 'A' && digit <= 'F')) {
+                int digiValue = (digit >= '0' && digit <= '9') ? digit - '0' : digit - 'A' + 10;
+                decimalValue += digiValue * Math.pow(base, power);
+            }
             power++;
         }
         return decimalValue;
