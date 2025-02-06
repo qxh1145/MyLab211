@@ -26,7 +26,7 @@ public class CountWordAndChar {
     }
 
     private void processInput(){
-        StringTokenizer tokenizer = new StringTokenizer(inputString, "\t\n");
+        StringTokenizer tokenizer = new StringTokenizer(inputString, "\t");
         countWord = tokenizer.countTokens();
 
         while (tokenizer.hasMoreTokens()){

@@ -14,15 +14,13 @@ public class Matrix {
     public void setvalue(int r, int c , int value){
         if (r > 0 && r <= row && c > 0 && c <= column) {
             matrix[r - 1][c - 1] = value;
-        }else {
-            throw new IndexOutOfBoundsException("Invalid matrix indices.");
         }
     }
     public int getValue(int r, int c) {
         if(r > 0 && r <= row && c > 0 && c <= column){
             return matrix[r - 1][c - 1];
         } else {
-            throw new IndexOutOfBoundsException("Invalid matrix indices.");
+            return -1;
         }
     }
     public void displayMatrix(){
