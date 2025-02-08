@@ -10,7 +10,9 @@ public class Main {
         MyStack myStack = new MyStack();
         myStack.push("Something");
         myStack.push("Someone");
-        myStack.get(1);
+        myStack.push("Hello");
+        myStack.push("Word");
         myStack.pop();
+        myStack.get(1);
     }
 }

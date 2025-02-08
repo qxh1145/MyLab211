@@ -11,7 +11,8 @@ public class MyStack {
 
     public void pop(){
         if (!stack.isEmpty()) {
-            stack.pop();
+            String poppedValue = stack.pop();
+            System.out.println("Popped: " + poppedValue);
         } else {
             System.out.println("Stack is empty");
         }
