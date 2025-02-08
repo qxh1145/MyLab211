@@ -10,31 +10,37 @@ public class Function {
         addValues();
     }
 
-    public void addValues(){
-        for (int i = 0 ; i < arr.length ; i++){
-            Random rand = new Random();
-            this.arr[i] = rand.nextInt(1000) + 1;
+    public void addValues() {
+        Random rand = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            this.arr[i] = rand.nextInt(10) + 1;
         }
     }
-    public void showValue(){
-        for (int j : arr) {
-            System.out.print(j + " ");
+
+    public void showValue() {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
         }
+        System.out.println();
     }
-    public void sort(){
+
+    public void sort() {
         int temp;
-        System.out.println("\nMang ban dau: ");
+        System.out.println("Mảng ban đầu: ");
         showValue();
-        for (int i = -1 ; ++i < arr.length-1;){
-            for (int j = arr.length-1 ; j >= 1 ; j--){
-                if (arr[j] < arr[j - 1]){
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = arr.length - 1; j > i; j--) {
+                if (arr[j] < arr[j - 1]) {
                     temp = arr[j];
                     arr[j] = arr[j - 1];
                     arr[j - 1] = temp;
                 }
             }
         }
-        System.out.println("\nMang sau khi sap xep: ");
+
+        System.out.println("Mảng sau khi sắp xếp: ");
         showValue();
     }
+
 }
