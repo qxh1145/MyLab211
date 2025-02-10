@@ -43,7 +43,6 @@ public class Function {
 
     public int search(int target) {
         sort();
-        int index;
 
         int low = 0;
         int high = arr.length - 1;

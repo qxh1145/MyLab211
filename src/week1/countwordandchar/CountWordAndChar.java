@@ -20,24 +20,21 @@ public class CountWordAndChar {
 
     public CountWordAndChar(String inputString) {
         this.inputString = inputString;
-        this.numOfChar = new HashMap<Character, Integer>();
-        this.numOfWord = new HashMap<String, Integer>();
+        this.numOfChar = new HashMap<>();
+        this.numOfWord = new HashMap<>();
         processInput();
     }
-
     private void processInput(){
-        StringTokenizer tokenizer = new StringTokenizer(inputString, "\t");
-        countWord = tokenizer.countTokens();
-
+        StringTokenizer tokenizer = new StringTokenizer(inputString, " ");
+        String word = tokenizer.nextToken();
         while (tokenizer.hasMoreTokens()){
-            String word = tokenizer.nextToken();
             numOfWord.put(word, numOfWord.getOrDefault(word, 0) + 1);
         }
-
-        for(char c : inputString.replaceAll("\\s","").toCharArray()){
-            numOfChar.put(c, numOfChar.getOrDefault(c, 0) + 1);
+        for (char c : inputString.replaceAll("\\s", "").toCharArray()){
+            numOfChar.put(c, numOfChar.getOrDefault(c,0) + 1);
         }
     }
+
 
     public Map<String, Integer> getNumOfWord() {
         return numOfWord;

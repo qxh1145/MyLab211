@@ -1,182 +1,114 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package week1.findspecialnumbers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
-/**
- *
- * @author knigh
- */
 public class Function {
-    SpeacialNumbers speacialNumbers = new SpeacialNumbers();
+    Equation equation = new Equation();
+    List<Float> coeList = new ArrayList<>();
 
-    public static void displayMenu(){
-        System.out.println("\n=== Equation Program ===");
-        System.out.println("1. Calculate Superlative Equation");
-        System.out.println("2. Calculate Quadratic Equation");
-        System.out.println("3. Exit");
-    }
-
-    public static void calSuperlativeEquation(){
-        float a = Validation.getFloat("Enter coeffficent A:  ");
-        float b =Validation.getFloat("Enter coeffficent B: ");
-
-        List<Float> result = calculateEquation(a,b);
-        if(result == null){
-            System.out.println("No solution");
-        }else if (result.isEmpty()){
-            System.out.println("Infinite solution");
-        }else {
-            System.out.println("Solution: x = " + result.get(0));
-        }
-        displayEquation(a,b);
-    }
-
-    public static void calQuadEquation(){
-        float a = Validation.getFloat("Enter coefficent A: ");
-        float b = Validation.getFloat("Enter coefficent B: ");
-        float c = Validation.getFloat("Enter coefficent C: ");
-
-        List<Float> result = calculateQuadraticEquation(a,b,c);
-
-        if (result == null){
-            System.out.println("No solution");
-        }else if (result.isEmpty()){
-            System.out.println("infitine solution");
-        }else if (result.size() == 1) {
-            System.out.println("Solution: x = " + result.get(0));
-        }else {
-            System.out.println("Solution: x1: = " + result.get(0) + "x2 = " + result.get(1));
-        }
-
-        displayQuadraticEquation(a,b,c);
-    }
-
-
-
-    private static List<Float> calculateEquation(float a, float b){
-        if (a == 0){
-            return b == 0 ? new ArrayList<>() : null;
-        }
-        return Collections.singletonList(-b/a);
-    }
-    private static List<Float> calculateQuadraticEquation(float a, float b, float c) {
+    public List<Float> calculateEquation(float a, float b) {
+        List<Float> result = new ArrayList<>();
+        equation.setCoeA(a);
+        equation.setCoeB(b);
 
         if (a == 0) {
-            return calculateEquation(b, c);
+            if (b == 0) {
+                System.out.println("Equation has infinitely many solutions.");
+            } else {
+                System.out.println("Equation has no solution.");
+            }
+        } else {
+            float x = -b / a;
+            result.add(x);
         }
-        float denta = b * b - 4 * a * c;
-        if (denta < 0) {
-            return null;
-        } else if (denta == 0){
-            return Collections.singletonList(-b / (2 * a));
-        }else {
-            return Arrays.asList((-b + (float) Math.sqrt(denta)) / (2 * a), (-b - (float) Math.sqrt(denta)) / (2 * a));
-        }
+        return result;
     }
 
-    private static boolean isEven(double a){
-        return (a % 2 == 0);
+    public List<Float> calculateQuadraticEquation(float a, float b, float c) {
+        List<Float> result = new ArrayList<>();
+        equation.setCoeA(a);
+        equation.setCoeB(b);
+        equation.setCoeC(c);
+
+        float delta = b * b - 4 * a * c; // Tính delta
+        if (delta > 0) {
+            float sqrtDelta = (float) Math.sqrt(delta); // Tính căn bậc 2 của delta
+            float x1 = (-b + sqrtDelta) / (2 * a);  // Tính x1 đúng
+            float x2 = (-b - sqrtDelta) / (2 * a);  // Tính x2 đúng
+            result.add(x1);
+            result.add(x2);
+        } else if (delta == 0) {
+            float x12 = -b / (2 * a);  // Nghiệm kép
+            result.add(x12);
+        }
+        return result;
     }
-    private static boolean isPerfectSquare(double a){
-        if (a < 0){
+
+    boolean isSquareNum(float x) {
+        if (x < 0) {
             return false;
         }
-        return Math.sqrt(a) * Math.sqrt(a) == a;
+        double sqrt = Math.sqrt(x);
+        return sqrt == Math.floor(sqrt);
     }
 
-    private static void displayQuadraticEquation(float... nums) {
-        System.out.println("\n----- Calculate Quadratic Equation -----");
+    boolean isOdd(float x) {
+        return x % 2 != 0;
+    }
 
-        List<Float> oddNumbers = new ArrayList<>();
-        List<Float> evenNumbers = new ArrayList<>();
-        List<Float> perfectSquares = new ArrayList<>();
+    public void display(List<Float> result) {
+        if (result.isEmpty()) {
+            System.out.println("No real solutions.");
+            return;
+        }
 
-        for (float num : nums) {
-            if (isEven(num)) {
-                evenNumbers.add(num);
+        List<Float> oddNum = new ArrayList<>();
+        List<Float> evenNum = new ArrayList<>();
+        List<Float> squareNum = new ArrayList<>();
+        coeList.add(equation.getCoeA());
+        coeList.add(equation.getCoeB());
+        coeList.add(equation.getCoeC());
+
+        for (float in : coeList) {
+            if (isSquareNum(in)) {
+                squareNum.add(in);
+            }
+            if (isOdd(in)) {
+                oddNum.add(in);
             } else {
-                oddNumbers.add(num);
-            }
-            if (isPerfectSquare(num)) {
-                perfectSquares.add(num);
+                evenNum.add(in);
             }
         }
 
-        if (!oddNumbers.isEmpty()) {
-            System.out.print("Odd Number(s): ");
-            for (Float odd : oddNumbers) {
-                System.out.print(odd + ", ");
+        float x1 = result.get(0);  // Luôn có ít nhất một nghiệm
+        float x2 = result.size() > 1 ? result.get(1) : Float.NaN;  // Nếu có 2 nghiệm thì gán x2, nếu không gán NaN
+
+        for (Float num : result) {
+            if (isSquareNum(num)) {
+                squareNum.add(num);
             }
-            System.out.println();
-        }
-
-        if (!evenNumbers.isEmpty()) {
-            System.out.print("Number is Even: ");
-            for (Float even : evenNumbers) {
-                System.out.print(even + ", ");
-            }
-            System.out.println();
-        }
-
-        if (!perfectSquares.isEmpty()) {
-            System.out.print("Number is Perfect Square: ");
-            for (Float square : perfectSquares) {
-                System.out.print(square + ", ");
-            }
-            System.out.println();
-        }
-    }
-
-    private static void displayEquation(float... nums) {
-        System.out.println("\n----- Calculate Equation -----");
-
-        List<Float> oddNumbers = new ArrayList<>();
-        List<Float> evenNumbers = new ArrayList<>();
-        List<Float> perfectSquares = new ArrayList<>();
-
-        for (float num : nums) {
-            if (isEven(num)) {
-                evenNumbers.add(num);
+            if (isOdd(num)) {
+                oddNum.add(num);
             } else {
-                oddNumbers.add(num);
-            }
-            if (isPerfectSquare(num)) {
-                perfectSquares.add(num);
+                evenNum.add(num);
             }
         }
 
-        if (!oddNumbers.isEmpty()) {
-            System.out.print("Odd Number(s): ");
-            for (Float odd : oddNumbers) {
-                System.out.print(odd + ", ");
-            }
-            System.out.println();
-        }
-
-        if (!evenNumbers.isEmpty()) {
-            System.out.print("Number is Even: ");
-            for (Float even : evenNumbers) {
-                System.out.print(even + ", ");
-            }
-            System.out.println();
-        }
-
-        if (!perfectSquares.isEmpty()) {
-            System.out.print("Number is Perfect Square: ");
-            for (Float square : perfectSquares) {
-                System.out.print(square + ", ");
-            }
-            System.out.println();
-        }
+        System.out.println("Solution: x1 = " + x1 + " and x2 = " + (Float.isNaN(x2) ? "None" : x2));
+        System.out.println("Odd Number(s): " + formatList(oddNum));
+        System.out.println("Even Number(s): " + formatList(evenNum));
+        System.out.println("Perfect Square(s): " + formatList(squareNum));
     }
 
-
-
+    private String formatList(List<Float> list) {
+        if (list.isEmpty()) {
+            return "None";
+        }
+        return list.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(","));
+    }
 }
