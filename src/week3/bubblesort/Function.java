@@ -26,7 +26,7 @@ public class Function {
 
     public void sort() {
         int temp;
-        System.out.println("Mảng ban đầu: ");
+        System.out.println("Array before sort: ");
         showValue();
 
         for (int i = 0; i < arr.length - 1; i++) {
@@ -39,7 +39,7 @@ public class Function {
             }
         }
 
-        System.out.println("Mảng sau khi sắp xếp: ");
+        System.out.println("Array after sort: ");
         showValue();
     }
 
