@@ -36,6 +36,7 @@ public class CountWordAndChar {
     }
 
 
+
     public Map<String, Integer> getNumOfWord() {
         return numOfWord;
     }

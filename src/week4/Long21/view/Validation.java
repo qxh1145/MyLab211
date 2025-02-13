@@ -1,4 +1,4 @@
-package week4.view;
+package week4.Long21.view;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -97,7 +97,7 @@ public class Validation {
             maxRange = temp;
         }
 
-        double value = Double.MIN_VALUE;
+        double value = Double.MIN_VALUE;                  
 
         do {
             try {

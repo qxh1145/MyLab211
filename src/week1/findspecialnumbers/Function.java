@@ -35,13 +35,13 @@ public class Function {
 
         float delta = b * b - 4 * a * c; // Tính delta
         if (delta > 0) {
-            float sqrtDelta = (float) Math.sqrt(delta); // Tính căn bậc 2 của delta
-            float x1 = (-b + sqrtDelta) / (2 * a);  // Tính x1 đúng
-            float x2 = (-b - sqrtDelta) / (2 * a);  // Tính x2 đúng
+            float sqrtDelta = (float) Math.sqrt(delta);
+            float x1 = (-b + sqrtDelta) / (2 * a);
+            float x2 = (-b - sqrtDelta) / (2 * a);
             result.add(x1);
             result.add(x2);
         } else if (delta == 0) {
-            float x12 = -b / (2 * a);  // Nghiệm kép
+            float x12 = -b / (2 * a);
             result.add(x12);
         }
         return result;
@@ -83,8 +83,8 @@ public class Function {
             }
         }
 
-        float x1 = result.get(0);  // Luôn có ít nhất một nghiệm
-        float x2 = result.size() > 1 ? result.get(1) : Float.NaN;  // Nếu có 2 nghiệm thì gán x2, nếu không gán NaN
+        float x1 = result.get(0);
+        float x2 = result.size() > 1 ? result.get(1) : Float.NaN;
 
         for (Float num : result) {
             if (isSquareNum(num)) {

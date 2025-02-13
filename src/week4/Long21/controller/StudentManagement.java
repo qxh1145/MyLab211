@@ -1,7 +1,7 @@
-package week4.controller;
+package week4.Long21.controller;
 
-import week4.model.StudentList;
-import week4.view.Menu;
+import week4.Long21.model.StudentList;
+import week4.Long21.view.Menu;
 
 public class StudentManagement extends Menu<String> {
     static String[] menu = {

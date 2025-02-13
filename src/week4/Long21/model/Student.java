@@ -1,4 +1,4 @@
-package week4.model;
+package week4.Long21.model;
 
 public class Student {
     private String studentID;

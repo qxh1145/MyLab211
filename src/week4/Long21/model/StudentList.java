@@ -1,6 +1,6 @@
-package week4.model;
+package week4.Long21.model;
 
-import week4.view.Validation;
+import week4.Long21.view.Validation;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -106,17 +106,15 @@ public class StudentList extends ArrayList<Student> {
         Map<String, Integer> reportMap = new HashMap<>();
 
         for (Student student : this) {
-            String key = student.getStudentName() + " | " + student.getCourseName();
+            String key = student.getStudentID() + " | " + student.getStudentName() + " | " + student.getCourseName();
             reportMap.put(key, reportMap.getOrDefault(key, 0) + 1);
         }
 
         System.out.println("Student Report:");
-        System.out.println("=".repeat(40));
-        System.out.printf("%-20s %-15s %-10s%n", "Student Name", "Course", "Total");
-        System.out.println("=".repeat(40));
+        System.out.printf("%-15s | %-20s | %-15s | %-10s%n","ID", "Student Name", "Course", "Total");
         for (Map.Entry<String, Integer> entry : reportMap.entrySet()) {
             String[] parts = entry.getKey().split(" \\| ");
-            System.out.printf("%-20s %-15s %-10d%n", parts[0], parts[1], entry.getValue());
+            System.out.printf("%-15s | %-20s | %-15s | %-10s%n", parts[0], parts[1],parts[2], entry.getValue());
         }
         System.out.println("=".repeat(40));
     }
