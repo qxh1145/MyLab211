@@ -22,10 +22,10 @@ public class StudentList extends ArrayList<Student> {
             return;
         }
         System.out.println("=".repeat(40));
-        System.out.printf("%-20s %-10s %-15s%n", "Student Name", "Semester", "Course Name");
+        System.out.printf("%-20s | %-10s | %-15s%n", "Student Name", "Semester", "Course Name");
         System.out.println("=".repeat(40));
         studentLists.forEach(student ->
-                System.out.printf("%-20s %-10d %-15s%n", student.getStudentName(), student.getSemester(), student.getCourseName())
+                System.out.printf("%-20s | %-10d | %-15s%n", student.getStudentName(), student.getSemester(), student.getCourseName())
         );
         System.out.println("=".repeat(40));
         System.out.println("Total students: " + studentLists.size());
