@@ -33,7 +33,7 @@ public class Function {
         equation.setCoeB(b);
         equation.setCoeC(c);
 
-        float delta = b * b - 4 * a * c; // Tính delta
+        float delta = b * b - 4 * a * c;
         if (delta > 0) {
             float sqrtDelta = (float) Math.sqrt(delta);
             float x1 = (-b + sqrtDelta) / (2 * a);

@@ -32,18 +32,18 @@ public class Function {
         showValue();
     }
     private void quicksort(int start, int end){
-        if (end <= start){
+        if (end < start){
             return;
         }
-        int pivot = partition(start, end);
-        quicksort(start, pivot - 1);
+        int pivot = partition(start,end);
+        quicksort(start,pivot - 1);
         quicksort(pivot + 1, end);
     }
-    private int partition(int start, int end){
+    private int partition(int start, int end) {
         int pivot = arr[end];
         int i = start - 1;
 
-        for (int j = start; j <= end - 1 ; j++) {
+        for (int j = start ; j <= end - 1; j++){
             if (arr[j] < pivot){
                 i++;
                 int temp = arr[i];
@@ -55,6 +55,7 @@ public class Function {
         int temp = arr[i];
         arr[i] = arr[end];
         arr[end] = temp;
+
         return i;
     }
 }

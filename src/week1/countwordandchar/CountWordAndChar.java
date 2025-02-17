@@ -25,14 +25,17 @@ public class CountWordAndChar {
         processInput();
     }
     private void processInput(){
-        StringTokenizer tokenizer = new StringTokenizer(inputString, "");
+        StringTokenizer tokenizer = new StringTokenizer(inputString, " ");
         String word = tokenizer.nextToken();
+
         while (tokenizer.hasMoreTokens()){
             numOfWord.put(word, numOfWord.getOrDefault(word, 0) + 1);
         }
-        for (char c : inputString.replaceAll("\\s", "").toCharArray()){
+
+        for (char c : inputString.replaceAll("\\s","").toCharArray()){
             numOfChar.put(c, numOfChar.getOrDefault(c,0) + 1);
         }
+
     }
 
 
