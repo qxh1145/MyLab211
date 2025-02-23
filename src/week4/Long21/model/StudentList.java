@@ -105,17 +105,16 @@ public class StudentList extends ArrayList<Student> {
     public void report() {
         Map<String, Integer> reportMap = new HashMap<>();
 
-        for (Student student : this) {
+        for(Student student : this){
             String key = student.getStudentID() + " | " + student.getStudentName() + " | " + student.getCourseName();
-            reportMap.put(key, reportMap.getOrDefault(key, 0) + 1);
+            reportMap.put(key, reportMap.getOrDefault(key,0) + 1);
         }
-
         System.out.println("Student Report:");
         System.out.printf("%-15s | %-20s | %-15s | %-10s%n","ID", "Student Name", "Course", "Total");
-        for (Map.Entry<String, Integer> entry : reportMap.entrySet()) {
-            String[] parts = entry.getKey().split(" \\| ");
-            System.out.printf("%-15s | %-20s | %-15s | %-10s%n", parts[0], parts[1],parts[2], entry.getValue());
-        }
+
+        for (Map.Entry<String, Integer> entry : reportMap.entrySet()){
+            String[] parts = entry.getKey().split("\\|");
+            System.out.printf("%-15s | %-20s | %-15s | %-10s%n", parts[0], parts[1],parts[2], entry.getValue());        }
         System.out.println("=".repeat(40));
     }
 }

@@ -48,13 +48,13 @@ public class Function {
         int high = arr.length - 1;
 
         //
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            if (arr[mid] == target) {
+        while (low <= high){
+            int mid = (high - low) / 2;
+            if (arr[mid] == target){
                 return mid;
-            } else if (arr[mid] < target) {
+            }else if (arr[mid] < target){
                 low = mid + 1;
-            } else {
+            }else {
                 high = mid - 1;
             }
         }

@@ -40,22 +40,20 @@ public class Function {
         quicksort(pivot + 1, end);
     }
     private int partition(int start, int end) {
-        int pivot = arr[end];
-        int i = start - 1;
+       int pivot = arr[end];
+       int i = start - 1;
 
-        for (int j = start ; j <= end - 1; j++){
-            if (arr[j] < pivot){
-                i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-        i++;
-        int temp = arr[i];
-        arr[i] = arr[end];
-        arr[end] = temp;
-
-        return i;
+       for(int j = start ; j <= end - 1 ; j++){
+           if (arr[j] < pivot){
+               i++;
+               int temp = arr[i];
+               arr[i] = arr[j];
+               arr[j] = temp;
+           }
+       }
+       i++;
+       int temp = arr[i];
+       arr[i] = arr[end];
+       arr[end] = temp;
     }
 }
