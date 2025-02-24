@@ -1,6 +1,5 @@
 package week5.shortP109.view;
 
-import week4.Long21.view.Validation;
 
 import java.util.ArrayList;
 
