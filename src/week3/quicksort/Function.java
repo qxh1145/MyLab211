@@ -55,5 +55,7 @@ public class Function {
        int temp = arr[i];
        arr[i] = arr[end];
        arr[end] = temp;
+
+       return i;
     }
 }

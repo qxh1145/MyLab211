@@ -1,6 +1,7 @@
 package week5.Short84;
 
 
+import java.beans.PropertyEditorSupport;
 import java.util.Scanner;
 
 public class BigNumber {
@@ -15,22 +16,22 @@ public class BigNumber {
     }
 
     public BigNumber add(BigNumber other){
-       String num1 = this.value;
-       String num2 = other.value;
-       StringBuilder result = new StringBuilder();
-       int carry = 0, i = num1.length() - 1, j = num2.length() - 1;
+        String num1 = this.value;
+        String num2 = other.value;
+        StringBuilder result = new StringBuilder();
 
-       while (i >= 0 || j >= 0 || carry > 0) {
-           int digit1 = i >= 0 ? num1.charAt(i) - '0' : 0;
-           int digit2 = j >= 0 ? num2.charAt(j) - '0' : 0;
-           int sum = digit1 + digit2 + carry;
-           result.append(sum % 10);
-           carry = sum / 10;
-           i--;
-           j--;
-       }
+        int borrow = 0 , i = num1.length() - 1 , j = num2.length() - 1;
 
-       return new BigNumber(result.reverse().toString());
+        while (borrow > 0 || i >= 0 || j >= 0){
+            int digit1 = i >= 0 ? num1.charAt(i) - '0': 0;
+            int digit2 = j >= 0 ? num2.charAt(j) - '0': 0;
+            int sum = borrow + digit2 + digit1;
+
+            result.append(sum / 10);
+            i--;
+            j--;
+        }
+        return new BigNumber(result.reverse().toString());
     }
     public BigNumber multiply(BigNumber other) {
         String num1 = this.value;
