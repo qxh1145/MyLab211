@@ -7,6 +7,7 @@ public class ContactList extends ArrayList<Contact> {
         super();
     }
 
+
     public void addContact() {
         int id = this.size();
         String fullnamw = Validation.getString("Enter full name: ");
@@ -15,8 +16,6 @@ public class ContactList extends ArrayList<Contact> {
         String phone = Validation.checkPhone("Enter phone: ");
         String lastName = fullnamw.split("\\s+")[1];
         String firstName = fullnamw.split("\\s+")[0];
-        String somethinf = group + address;
-        System.out.println(somethinf);
 
         this.add(new Contact(id + 1, fullnamw, group, address, phone, lastName, firstName));
     }

@@ -13,7 +13,11 @@ public class TeacherAndStudent extends ArrayList<Person> {
 
     public void addTeacher(){
         Teacher teacher = new Teacher();
-        teacher.inputAll();
+        try {
+            teacher.inputAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         this.add(teacher);
     }
     public void addStudent() throws Exception {

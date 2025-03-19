@@ -2,9 +2,7 @@ package week4.Short105.model;
 
 import week4.Short105.view.Validation;
 
-import java.util.Date;
-
-public class  Person {
+public class  Person  {
     Validation validation = new Validation();
     String ID;
     String fullName;

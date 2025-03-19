@@ -1,4 +1,4 @@
-package week6.Short56;
+ package week6.Short56;
 
 import java.util.Scanner;
 

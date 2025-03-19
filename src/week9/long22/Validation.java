@@ -1,4 +1,4 @@
-package week6.Short54;
+package week9.long22;
 
 import java.util.Scanner;
 
@@ -100,27 +100,19 @@ public class Validation {
         return value;
     }
 
-    public static String checkPhone(String msg) {
-        String value = null;
-        while (true) {
-            System.out.print(msg);
-            value = scanner.nextLine().trim();
-
-            String[] a = value.split("-");
-            String[] b = value.split("\\.");
-            String[] c = value.split(" ");
-
-            if (a.length == 3 && a[0].length() == 3 && a[1].length() == 3 && a[2].length() == 4) {
-                break;
-            } else if (b.length == 3 && b[0].length() == 3 && b[1].length() == 3 && b[2].length() == 4) {
-                break;
-            } else if (c.length == 3 && c[0].length() == 3 && c[1].length() == 3 && c[2].length() == 4) {
-                break;
-            } else {
-                System.err.println("Invalid");
-            }
+    public String checkPhone(String input){
+        String temp = input.trim();
+        if(!temp.matches("\\d") && temp.length() < 10){
+            return null;
         }
-        return value;
+        return input;
     }
 
+    public String checkEmail(String input){
+        String temp = input.trim();
+        if(!temp.matches(".*@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")){
+            return null;
+        }
+        return input;
+    }
 }

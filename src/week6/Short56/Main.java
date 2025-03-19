@@ -15,7 +15,7 @@ public class Main {
             int choice = Validation.getInt("Enter your choice: ", 1, 5);
             switch (choice) {
                 case 1 -> wm.addWorker();
-                case 2 -> wm.inscreaseSalary();
+                case 2 -> wm.increaseSalary();
                 case 3 -> wm.descreaseSalary();
                 case 4 -> wm.displayHistory();
                 case 5 -> System.exit(0);

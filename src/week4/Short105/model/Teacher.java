@@ -15,12 +15,8 @@ public class Teacher extends Person {
     }
 
     @Override
-    public void inputAll() {
-        try {
-            super.inputAll();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public void inputAll() throws Exception {
+        super.inputAll();
         this.yearInProfession = validation.getInt("Enter year in profession: ");
         this.contracType = validation.getShort("Enter contract type: ");
         this.salaryCoefficent = validation.getInt("Enter salary coefficent: ");

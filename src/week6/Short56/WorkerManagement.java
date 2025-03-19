@@ -30,32 +30,34 @@ public class WorkerManagement extends ArrayList<Worker> {
         this.add(new Worker(code, name, age, salary, workLocation));
     }
 
-    public void inscreaseSalary(){
-       String find = Validation.getString("Enter code to find: ");
+    public void increaseSalary(){
+        String find = Validation.getString("Enter code to find: ");
         Worker worker = this.stream().filter(w -> w.getCode().equals(find)).findFirst().orElse(null);
         if (worker == null) {
-            System.out.println("Worker not found!");
+            System.out.println("not found");
         } else {
             float increase;
             while (true) {
-                System.out.println("------- Up/Down Salary --------");
+                System.out.println("Up/Down Salary");
                 increase = Validation.getFloat("Enter salary: ");
                 if (increase > worker.getSalary()) {
-                    sh.add(new SalaryHistory(worker.getCode(), worker.name, worker.age, increase,worker.workLocation, "up", getDate()));
+                    sh.add(new SalaryHistory(worker.getCode(), worker.name, worker.age, increase, worker.workLocation, "up", getDate()));
                     break;
                 }
             }
             worker.setSalary(increase);
-            System.out.println("Update successfully!");
+            System.out.println("Update success");
         }
     }
+    
+    
 
     public void descreaseSalary(){
         String find = Validation.getString("Enter code to find: ");
         Worker worker = this.stream().filter(w -> w.getCode().equals(find)).findFirst().orElse(null);
-        if (worker == null) {
-            System.out.println("Worker not found!");
-        } else {
+        if(worker == null){
+            System.out.println("not found");
+        }else {
             float decrease;
             while (true) {
                 System.out.println("------- Up/Down Salary --------");
@@ -66,7 +68,10 @@ public class WorkerManagement extends ArrayList<Worker> {
                 }
             }
             worker.setSalary(decrease);
-            System.out.println("Update successfully!");
+            if (decrease < worker.getSalary()) {
+                System.out.println("Update success");
+        }
+            System.out.println("Update success");
         }
     }
     public void display() {
