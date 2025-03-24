@@ -34,7 +34,7 @@ public class CandidateList extends ArrayList<Candidate> {
             int graduateTime = validation.getInt("Enter graduate year: ");
             String rankOfG = validation.getString("Enter rank of graduation: ");
             String uni = validation.getString("Enter uni name: ");
-            this.add(new Fresher(candidateID, fName, lName, birthD, address, phone, email, 1, graduateTime, rankOfG, uni));
+            this.add(new Fresher(candidateID, fName, lName, birthD, address, phone, email, 1, uni, graduateTime, rankOfG));
         }
         if(flag == 3){
             String major = validation.getString("Enter major: ");
